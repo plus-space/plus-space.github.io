@@ -6,127 +6,351 @@
 <title>+SPACE</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-  background: #f5f5f5;
-  overflow-x: hidden;
-  font-family: Arial, Helvetica, sans-serif;
+html{
+    scroll-behavior:smooth;
 }
 
-/* TOP BLACK BAR */
-
-.top-bar {
-  width: 100%;
-  height: 42px;
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+body{
+    background:#f4f4f4;
+    overflow-x:hidden;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#000;
 }
 
-.top-menu {
-  display: flex;
-  gap: 22px;
-  align-items: center;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+/* ---------------- */
+/* TOP BAR */
+/* ---------------- */
+
+.top-bar{
+    height:42px;
+    background:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
 }
 
-.top-menu a {
-  color: #7d7d7d;
-  text-decoration: none;
-  transition: all 0.35s ease;
-  position: relative;
+.top-menu{
+    display:flex;
+    gap:22px;
 }
 
-.top-menu a:hover {
-  color: white;
-  transform: translateY(-1px);
+.top-menu a{
+    color:#727272;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    position:relative;
+    transition:.35s ease;
 }
 
-.top-menu a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 0%;
-  height: 1px;
-  background: white;
-  transition: 0.35s ease;
+.top-menu a:hover{
+    color:#fff;
 }
 
-.top-menu a:hover::after {
-  width: 100%;
+.top-menu a::after{
+    content:'';
+    position:absolute;
+    bottom:-3px;
+    left:0;
+    width:0%;
+    height:1px;
+    background:#fff;
+    transition:.35s ease;
 }
 
-/* LOGO AREA */
-
-.logo-wrap {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-top: 20px;
+.top-menu a:hover::after{
+    width:100%;
 }
 
-.logo {
-  font-size: clamp(80px, 8vw, 150px);
-  font-weight: 900;
-  letter-spacing: -6px;
-  color: black;
-  text-transform: uppercase;
-  line-height: 1;
-  cursor: default;
-  transition: transform .5s ease;
+/* ---------------- */
+/* PAGE */
+/* ---------------- */
+
+.page{
+    min-height:220vh;
+    position:relative;
+    padding-top:70px;
 }
 
-.logo:hover {
-  transform: scale(1.015);
+/* ---------------- */
+/* LOGO */
+/* ---------------- */
+
+.logo-wrap{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    margin-top:20px;
 }
 
-/* subtle flicker */
-
-@keyframes flicker {
-  0% {opacity: 1;}
-  50% {opacity: .96;}
-  100% {opacity: 1;}
+.logo{
+    font-size:clamp(80px,9vw,160px);
+    font-weight:900;
+    letter-spacing:-0.09em;
+    animation:flicker 4s ease-in-out infinite;
 }
 
-.logo {
-  animation: flicker 4s infinite ease-in-out;
+@keyframes flicker{
+    0%,100%{opacity:1;}
+    50%{opacity:.96;}
 }
 
-.empty-space {
-  height: 80vh;
+/* ---------------- */
+/* MAIN GRID */
+/* ---------------- */
+
+.layout{
+    width:100%;
+    max-width:1500px;
+    margin:auto;
+    padding:50px 70px 120px;
+    position:relative;
 }
+
+/* placeholders */
+
+.block{
+    border:1px solid rgba(0,0,0,.08);
+    background:rgba(255,255,255,.35);
+    backdrop-filter: blur(4px);
+}
+
+/* left image */
+
+.left-visual{
+    width:330px;
+    height:430px;
+    margin-top:30px;
+}
+
+/* center text */
+
+.center-text{
+    width:420px;
+    margin-left:430px;
+    margin-top:-280px;
+}
+
+.line{
+    height:14px;
+    background:#dadada;
+    margin-bottom:14px;
+    border-radius:100px;
+    opacity:.65;
+}
+
+.line.short{
+    width:60%;
+}
+
+/* bottom text */
+
+.bottom-text{
+    width:380px;
+    margin-top:240px;
+    margin-left:360px;
+}
+
+/* right visual */
+
+.right-visual{
+    width:260px;
+    height:340px;
+    position:absolute;
+    right:70px;
+    bottom:160px;
+}
+
+/* ---------------- */
+/* ROTATING PLUS */
+/* ---------------- */
+
+.plus-wrap{
+    position:fixed;
+    left:-110px;
+    bottom:-120px;
+    z-index:1;
+    pointer-events:none;
+}
+
+.plus{
+    font-size:720px;
+    font-weight:900;
+    line-height:0.7;
+    color:#000;
+    transform-origin:center;
+    transition:transform .08s linear;
+    will-change:transform;
+    user-select:none;
+}
+
+/* ---------------- */
+/* subtle reveal */
+/* ---------------- */
+
+.fade{
+    opacity:0;
+    transform:translateY(20px);
+    animation:fadeUp .9s forwards;
+}
+
+.delay1{
+    animation-delay:.15s;
+}
+
+.delay2{
+    animation-delay:.3s;
+}
+
+.delay3{
+    animation-delay:.45s;
+}
+
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ---------------- */
+/* mobile */
+/* ---------------- */
+
+@media(max-width:1000px){
+
+.layout{
+    padding:40px 25px 100px;
+}
+
+.left-visual,
+.center-text,
+.bottom-text,
+.right-visual{
+    position:relative;
+    margin:40px auto;
+    width:100%;
+    max-width:400px;
+}
+
+.center-text{
+    margin-top:40px;
+}
+
+.bottom-text{
+    margin-top:40px;
+}
+
+.plus{
+    font-size:420px;
+}
+
+.plus-wrap{
+    left:-90px;
+    bottom:-90px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="top-bar">
-  <nav class="top-menu">
-    <a href="#">DESERTOUT</a>
-    <a href="#">ANTI-FASHION</a>
-    <a href="#">RECONSTRUCTION</a>
-    <a href="#">PROTOTYPE</a>
-    <a href="#">BRANDBOOK</a>
-  </nav>
+<!-- TOP BAR -->
+
+<header class="top-bar">
+    <nav class="top-menu">
+        <a href="#">DESERTOUT</a>
+        <a href="#">ANTI-FASHION</a>
+        <a href="#">RECONSTRUCTION</a>
+        <a href="#">PROTOTYPE</a>
+        <a href="#">BRANDBOOK</a>
+    </nav>
+</header>
+
+<!-- BIG PLUS -->
+
+<div class="plus-wrap">
+    <div class="plus">+</div>
 </div>
 
-<div class="logo-wrap">
-  <div class="logo">+SPACE</div>
-</div>
+<!-- PAGE -->
 
-<div class="empty-space"></div>
+<section class="page">
+
+    <!-- LOGO -->
+
+    <div class="logo-wrap fade">
+        <div class="logo">+SPACE</div>
+    </div>
+
+    <!-- LAYOUT -->
+
+    <div class="layout">
+
+        <!-- left image -->
+
+        <div class="block left-visual fade delay1"></div>
+
+        <!-- center text -->
+
+        <div class="center-text fade delay2">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line short"></div>
+            <div class="line"></div>
+            <div class="line short"></div>
+        </div>
+
+        <!-- bottom text -->
+
+        <div class="bottom-text fade delay3">
+            <div class="line"></div>
+            <div class="line short"></div>
+            <div class="line"></div>
+        </div>
+
+        <!-- right visual -->
+
+        <div class="block right-visual fade delay2"></div>
+
+    </div>
+
+</section>
+
+<script>
+
+const plus = document.querySelector('.plus');
+
+window.addEventListener('scroll', () => {
+
+    const scrollY = window.scrollY;
+
+    const rotation = scrollY * 0.22;
+
+    const moveX = Math.sin(scrollY * 0.002) * 6;
+    const moveY = Math.cos(scrollY * 0.0015) * 5;
+
+    plus.style.transform =
+    `translate(${moveX}px, ${moveY}px)
+    rotate(${rotation}deg)`;
+
+});
+
+</script>
 
 </body>
 </html>
