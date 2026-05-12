@@ -3,24 +3,29 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <title>+SPACE</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
 <style>
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 html{
-    scroll-behavior:smooth;
+scroll-behavior:smooth;
 }
 
 body{
-    background:#f4f4f4;
-    overflow-x:hidden;
-    font-family:Arial, Helvetica, sans-serif;
-    color:#000;
+background:#f5f5f5;
+font-family:'Inter',sans-serif;
+overflow-x:hidden;
+color:#000;
 }
 
 /* ---------------- */
@@ -28,50 +33,52 @@ body{
 /* ---------------- */
 
 .top-bar{
-    height:42px;
-    background:#000;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:fixed;
-    width:100%;
-    top:0;
-    z-index:1000;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:42px;
+background:#000;
+z-index:999;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
-.top-menu{
-    display:flex;
-    gap:22px;
+.top-nav{
+display:flex;
+gap:26px;
 }
 
-.top-menu a{
-    color:#727272;
-    text-decoration:none;
-    font-size:13px;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:.05em;
-    position:relative;
-    transition:.35s ease;
+.top-nav a{
+color:#8f8f8f;
+text-decoration:none;
+font-size:12px;
+font-weight:700;
+letter-spacing:.08em;
+text-transform:uppercase;
+transition:.35s ease;
+position:relative;
 }
 
-.top-menu a:hover{
-    color:#fff;
+.top-nav a:hover{
+color:#fff;
+transform:translateY(-1px);
 }
 
-.top-menu a::after{
-    content:'';
-    position:absolute;
-    bottom:-3px;
-    left:0;
-    width:0%;
-    height:1px;
-    background:#fff;
-    transition:.35s ease;
+.top-nav a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-4px;
+width:0%;
+height:1px;
+background:#fff;
+transition:.35s ease;
 }
 
-.top-menu a:hover::after{
-    width:100%;
+.top-nav a:hover::after{
+width:100%;
 }
 
 /* ---------------- */
@@ -79,9 +86,10 @@ body{
 /* ---------------- */
 
 .page{
-    min-height:220vh;
-    position:relative;
-    padding-top:70px;
+width:100%;
+min-height:220vh;
+padding:90px 80px 0;
+position:relative;
 }
 
 /* ---------------- */
@@ -89,177 +97,305 @@ body{
 /* ---------------- */
 
 .logo-wrap{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    margin-top:20px;
+display:flex;
+justify-content:center;
+margin-bottom:80px;
 }
 
 .logo{
-    font-size:clamp(80px,9vw,160px);
-    font-weight:900;
-    letter-spacing:-0.09em;
-    animation:flicker 4s ease-in-out infinite;
+font-size:clamp(80px,9vw,170px);
+font-weight:900;
+letter-spacing:-0.08em;
+line-height:.9;
+animation:flicker 4s infinite ease-in-out;
 }
 
 @keyframes flicker{
-    0%,100%{opacity:1;}
-    50%{opacity:.96;}
+0%,100%{opacity:1;}
+50%{opacity:.96;}
 }
 
 /* ---------------- */
 /* MAIN GRID */
 /* ---------------- */
 
-.layout{
-    width:100%;
-    max-width:1500px;
-    margin:auto;
-    padding:50px 70px 120px;
-    position:relative;
+.main-grid{
+display:grid;
+grid-template-columns:320px 1fr 320px;
+gap:80px;
+align-items:start;
 }
 
-/* placeholders */
+/* IMAGE BLOCKS */
 
-.block{
-    border:1px solid rgba(0,0,0,.08);
-    background:rgba(255,255,255,.35);
-    backdrop-filter: blur(4px);
+.image-box{
+width:320px;
+height:320px;
+background:#ececec;
+border:1px solid rgba(0,0,0,.08);
+overflow:hidden;
+position:relative;
+transition:.45s ease;
 }
 
-/* left image */
-
-.left-visual{
-    width:330px;
-    height:430px;
-    margin-top:30px;
+.image-box:hover{
+transform:translateY(-4px);
 }
 
-/* center text */
+/* placeholder */
 
-.center-text{
-    width:420px;
-    margin-left:430px;
-    margin-top:-280px;
+.placeholder{
+position:absolute;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:12px;
+letter-spacing:.2em;
+opacity:.18;
+font-weight:700;
 }
 
-.line{
-    height:14px;
-    background:#dadada;
-    margin-bottom:14px;
-    border-radius:100px;
-    opacity:.65;
+/* CENTER TEXT */
+
+.center-copy{
+padding-top:20px;
+max-width:550px;
 }
 
-.line.short{
-    width:60%;
+.fake-line{
+height:9px;
+background:#d9d9d9;
+margin-bottom:18px;
+border-radius:999px;
+opacity:.65;
 }
 
-/* bottom text */
-
-.bottom-text{
-    width:380px;
-    margin-top:240px;
-    margin-left:360px;
+.fake-line:nth-child(1){
+width:100%;
 }
 
-/* right visual */
+.fake-line:nth-child(2){
+width:88%;
+}
 
-.right-visual{
-    width:260px;
-    height:340px;
-    position:absolute;
-    right:70px;
-    bottom:160px;
+.fake-line:nth-child(3){
+width:72%;
+}
+
+.fake-line:nth-child(4){
+width:91%;
+}
+
+.fake-line:nth-child(5){
+width:58%;
 }
 
 /* ---------------- */
-/* ROTATING PLUS */
+/* CAROUSEL */
+/* ---------------- */
+
+.carousel-section{
+margin-top:120px;
+position:relative;
+}
+
+.carousel-grid{
+display:grid;
+grid-template-columns:1.2fr .8fr;
+gap:50px;
+align-items:center;
+}
+
+.carousel-box{
+height:380px;
+position:relative;
+overflow:hidden;
+border-radius:8px;
+
+background:
+radial-gradient(circle at 15% 15%,
+rgba(255,255,255,.95),
+rgba(255,255,255,0) 35%),
+
+radial-gradient(circle at 80% 75%,
+rgba(0,0,0,.45),
+rgba(0,0,0,0) 45%),
+
+linear-gradient(
+135deg,
+#ffffff 0%,
+#eeeeee 18%,
+#d7d7d7 38%,
+#979797 58%,
+#444444 76%,
+#000000 100%
+);
+
+box-shadow:
+inset 0 0 80px rgba(255,255,255,.15),
+0 25px 45px rgba(0,0,0,.12);
+}
+
+.carousel-slide{
+position:absolute;
+inset:0;
+opacity:0;
+transition:opacity 1s ease;
+object-fit:cover;
+width:100%;
+height:100%;
+}
+
+.carousel-slide.active{
+opacity:1;
+}
+
+.carousel-copy{
+max-width:360px;
+}
+
+.carousel-line{
+height:10px;
+background:#d6d6d6;
+margin-bottom:18px;
+border-radius:999px;
+opacity:.6;
+}
+
+.carousel-line:nth-child(1){
+width:100%;
+}
+
+.carousel-line:nth-child(2){
+width:82%;
+}
+
+.carousel-line:nth-child(3){
+width:65%;
+}
+
+/* ---------------- */
+/* METAL PLUS */
 /* ---------------- */
 
 .plus-wrap{
-    position:fixed;
-    left:-110px;
-    bottom:-120px;
-    z-index:1;
-    pointer-events:none;
+position:fixed;
+left:-30px;
+bottom:-35px;
+z-index:2;
+pointer-events:none;
 }
 
 .plus{
-    font-size:720px;
-    font-weight:900;
-    line-height:0.7;
-    color:#000;
-    transform-origin:center;
-    transition:transform .08s linear;
-    will-change:transform;
-    user-select:none;
+width:150px;
+height:150px;
+position:relative;
+transition:transform .1s linear;
+}
+
+.plus::before,
+.plus::after{
+content:'';
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+background:
+linear-gradient(
+145deg,
+#ffffff,
+#cfcfcf,
+#727272,
+#ededed,
+#525252,
+#f8f8f8
+);
+
+box-shadow:
+inset 10px 10px 18px rgba(255,255,255,.35),
+inset -10px -10px 18px rgba(0,0,0,.22),
+0 14px 24px rgba(0,0,0,.18);
+
+border-radius:6px;
+}
+
+.plus::before{
+width:42px;
+height:150px;
+}
+
+.plus::after{
+width:150px;
+height:42px;
 }
 
 /* ---------------- */
-/* subtle reveal */
+/* FOOTER PANEL */
 /* ---------------- */
 
-.fade{
-    opacity:0;
-    transform:translateY(20px);
-    animation:fadeUp .9s forwards;
+.footer-panel{
+margin-top:140px;
+height:90px;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:90px;
 }
 
-.delay1{
-    animation-delay:.15s;
+.footer-panel span{
+color:#fff;
+font-size:12px;
+font-weight:600;
+letter-spacing:.14em;
+text-transform:uppercase;
+cursor:pointer;
+transition:.35s ease;
 }
 
-.delay2{
-    animation-delay:.3s;
-}
-
-.delay3{
-    animation-delay:.45s;
-}
-
-@keyframes fadeUp{
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+.footer-panel span:hover{
+opacity:.7;
+transform:translateY(-2px);
 }
 
 /* ---------------- */
-/* mobile */
+/* MOBILE */
 /* ---------------- */
 
 @media(max-width:1000px){
 
-.layout{
-    padding:40px 25px 100px;
+.page{
+padding:80px 25px 0;
 }
 
-.left-visual,
-.center-text,
-.bottom-text,
-.right-visual{
-    position:relative;
-    margin:40px auto;
-    width:100%;
-    max-width:400px;
+.main-grid{
+grid-template-columns:1fr;
+gap:40px;
 }
 
-.center-text{
-    margin-top:40px;
+.image-box{
+width:100%;
+height:280px;
 }
 
-.bottom-text{
-    margin-top:40px;
+.carousel-grid{
+grid-template-columns:1fr;
 }
 
-.plus{
-    font-size:420px;
+.carousel-box{
+height:280px;
 }
 
-.plus-wrap{
-    left:-90px;
-    bottom:-90px;
+.logo{
+font-size:22vw;
+}
+
+.footer-panel{
+gap:30px;
+flex-wrap:wrap;
+padding:20px;
+height:auto;
 }
 
 }
@@ -272,62 +408,88 @@ body{
 <!-- TOP BAR -->
 
 <header class="top-bar">
-    <nav class="top-menu">
-        <a href="#">DESERTOUT</a>
-        <a href="#">ANTI-FASHION</a>
-        <a href="#">RECONSTRUCTION</a>
-        <a href="#">PROTOTYPE</a>
-        <a href="#">BRANDBOOK</a>
-    </nav>
+<nav class="top-nav">
+<a href="#">DESERTOUT</a>
+<a href="#">ANTI-FASHION</a>
+<a href="#">RECONSTRUCTION</a>
+<a href="#">PROTOTYPE</a>
+<a href="#">BRANDBOOK</a>
+</nav>
 </header>
 
-<!-- BIG PLUS -->
+<!-- METAL PLUS -->
 
 <div class="plus-wrap">
-    <div class="plus">+</div>
+<div class="plus"></div>
 </div>
 
 <!-- PAGE -->
 
 <section class="page">
 
-    <!-- LOGO -->
+<!-- LOGO -->
 
-    <div class="logo-wrap fade">
-        <div class="logo">+SPACE</div>
-    </div>
+<div class="logo-wrap">
+<div class="logo">+SPACE</div>
+</div>
 
-    <!-- LAYOUT -->
+<!-- TOP CONTENT -->
 
-    <div class="layout">
+<div class="main-grid">
 
-        <!-- left image -->
+<div class="image-box">
+<div class="placeholder">IMAGE 001</div>
+</div>
 
-        <div class="block left-visual fade delay1"></div>
+<div class="center-copy">
 
-        <!-- center text -->
+<div class="fake-line"></div>
+<div class="fake-line"></div>
+<div class="fake-line"></div>
+<div class="fake-line"></div>
+<div class="fake-line"></div>
 
-        <div class="center-text fade delay2">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line short"></div>
-            <div class="line"></div>
-            <div class="line short"></div>
-        </div>
+</div>
 
-        <!-- bottom text -->
+<div class="image-box">
+<div class="placeholder">IMAGE 002</div>
+</div>
 
-        <div class="bottom-text fade delay3">
-            <div class="line"></div>
-            <div class="line short"></div>
-            <div class="line"></div>
-        </div>
+</div>
 
-        <!-- right visual -->
+<!-- CAROUSEL -->
 
-        <div class="block right-visual fade delay2"></div>
+<div class="carousel-section">
 
-    </div>
+<div class="carousel-grid">
+
+<div class="carousel-box">
+
+<img src="" class="carousel-slide active">
+<img src="" class="carousel-slide">
+<img src="" class="carousel-slide">
+
+</div>
+
+<div class="carousel-copy">
+
+<div class="carousel-line"></div>
+<div class="carousel-line"></div>
+<div class="carousel-line"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer-panel">
+<span>FAQ</span>
+<span>COOKIES</span>
+<span>SUPPORT</span>
+</div>
 
 </section>
 
@@ -335,18 +497,14 @@ body{
 
 const plus = document.querySelector('.plus');
 
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', ()=>{
 
-    const scrollY = window.scrollY;
+const scroll = window.scrollY;
 
-    const rotation = scrollY * 0.22;
+const rotation = scroll * .23;
 
-    const moveX = Math.sin(scrollY * 0.002) * 6;
-    const moveY = Math.cos(scrollY * 0.0015) * 5;
-
-    plus.style.transform =
-    `translate(${moveX}px, ${moveY}px)
-    rotate(${rotation}deg)`;
+plus.style.transform =
+`rotate(${rotation}deg)`;
 
 });
 
