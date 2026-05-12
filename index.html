@@ -7,223 +7,385 @@
 <title>+SPACE</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
 <style>
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
-    background:#f4f4f4;
-    color:#000;
-    font-family:'Inter',sans-serif;
+font-family:'Inter',sans-serif;
+background:#f3f3f3;
+color:#000;
+overflow-x:hidden;
 }
 
-.container{
-    width:100%;
-}
+/* top logo */
 
-.header{
-    padding:40px 60px 20px;
+.top{
+padding:30px 35px 0;
+position:relative;
+z-index:20;
 }
 
 .logo{
-    font-size:9vw;
-    font-weight:500;
-    letter-spacing:-0.08em;
-    line-height:0.9;
+font-size:12vw;
+font-weight:900;
+line-height:.9;
+letter-spacing:-0.08em;
+display:inline-block;
+animation:flicker 7s infinite;
+}
+
+@keyframes flicker{
+0%,100%{
+opacity:1;
+}
+49%{
+opacity:1;
+}
+50%{
+opacity:.92;
+}
+51%{
+opacity:1;
+}
+70%{
+opacity:.96;
+}
+}
+
+/* main */
+
+.layout{
+display:flex;
+min-height:300vh;
+padding:20px 35px 80px;
+}
+
+/* left side */
+
+.left{
+width:60%;
+padding-top:40px;
+position:relative;
+z-index:5;
+}
+
+.menu-block{
+margin-bottom:80px;
+transition:.4s ease;
+}
+
+.line{
+width:18px;
+height:1px;
+background:#000;
+margin-bottom:12px;
+opacity:.5;
+}
+
+.label{
+font-size:17px;
+font-weight:700;
+margin-bottom:8px;
+transition:.3s;
 }
 
 .sub{
-    margin-top:10px;
-    font-size:18px;
-    letter-spacing:0.2em;
+font-size:13px;
+color:#8f8f8f;
+letter-spacing:.05em;
+text-transform:uppercase;
+line-height:1.5;
 }
 
-.page{
-    padding:40px 60px 120px;
+.menu-block:hover{
+transform:translateX(8px);
 }
 
-.meta{
-    display:flex;
-    justify-content:space-between;
-    font-size:12px;
-    text-transform:uppercase;
-    margin-bottom:30px;
-    letter-spacing:0.08em;
+.menu-block:hover .label{
+opacity:.55;
 }
 
-.image-wrap{
-    width:100%;
-    margin-bottom:120px;
+/* scroll sections */
+
+.section{
+height:100vh;
+display:flex;
+align-items:center;
 }
 
-.image-wrap img{
-    width:100%;
-    height:auto;
-    display:block;
-    object-fit:cover;
+.section-inner{
+max-width:400px;
 }
 
-.footer-meta{
-    display:flex;
-    justify-content:space-between;
-    margin-top:20px;
-    font-size:12px;
-    text-transform:uppercase;
-    line-height:1.6;
-    letter-spacing:0.06em;
+.series-title{
+font-size:42px;
+font-weight:700;
+line-height:1;
+margin-bottom:18px;
+letter-spacing:-0.04em;
 }
 
-.black-section{
-    background:#000;
-    color:#fff;
-    padding:60px;
+.series-text{
+font-size:14px;
+line-height:1.7;
+color:#666;
 }
 
-.black-section .footer-meta{
-    color:#fff;
+/* right fixed panel */
+
+.right{
+position:fixed;
+right:0;
+top:0;
+width:38%;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+border-left:1px solid rgba(0,0,0,.06);
+overflow:hidden;
 }
 
-@media(max-width:768px){
-
-    .header{
-        padding:30px 20px 10px;
-    }
-
-    .logo{
-        font-size:20vw;
-    }
-
-    .page,
-    .black-section{
-        padding:20px;
-    }
-
-    .meta,
-    .footer-meta{
-        flex-direction:column;
-        gap:20px;
-    }
+.image-stage{
+position:relative;
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
 }
+
+.visual{
+position:absolute;
+width:260px;
+max-height:340px;
+object-fit:contain;
+opacity:0;
+transform:translateY(20px) scale(.96);
+transition:
+opacity .8s ease,
+transform .8s ease,
+filter .8s ease;
+filter:blur(10px);
+}
+
+.visual.active{
+opacity:1;
+transform:translateY(0) scale(1);
+filter:blur(0px);
+}
+
+/* subtle floating */
+
+.visual.active{
+animation:floaty 7s ease-in-out infinite;
+}
+
+@keyframes floaty{
+0%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-8px);
+}
+100%{
+transform:translateY(0px);
+}
+}
+
+/* right text */
+
+.right-meta{
+position:absolute;
+bottom:55px;
+left:55px;
+font-size:11px;
+text-transform:uppercase;
+line-height:1.8;
+letter-spacing:.08em;
+max-width:180px;
+}
+
+.right-meta div{
+margin-bottom:18px;
+}
+
+/* mobile */
+
+@media(max-width:900px){
+
+.layout{
+flex-direction:column;
+min-height:auto;
+}
+
+.left{
+width:100%;
+}
+
+.right{
+position:relative;
+width:100%;
+height:55vh;
+border:none;
+}
+
+.logo{
+font-size:25vw;
+}
+
+.visual{
+width:180px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="top">
+<div class="logo">+SPACE</div>
+</div>
 
-    <header class="header">
-        <div class="logo">+ SPACE</div>
-        <div class="sub">— DESERTOUT</div>
-    </header>
+<div class="layout">
 
-    <main>
+<div class="left">
 
-        <!-- SERIES 001 -->
-        <section class="black-section">
+<div class="menu-block">
+<div class="line"></div>
+<div class="label">+SPACE — MENU</div>
+<div class="sub">HOME</div>
+</div>
 
-            <div class="meta">
-                <div>
-                    VISUAL RESEARCH<br>
-                    SERIES 001
-                </div>
+<div class="menu-block">
+<div class="line"></div>
+<div class="label">VISUAL RESEARCH</div>
+<div class="sub">SERIES 001–003</div>
+</div>
 
-                <div>
-                    NO PRODUCT<br>
-                    ONLY LANGUAGE
-                </div>
-            </div>
+<div class="menu-block">
+<div class="line"></div>
+<div class="label">NO PRODUCT</div>
+<div class="sub">ONLY LANGUAGE</div>
+</div>
 
-            <div class="image-wrap">
-                <img src="series-001.png" alt="">
-            </div>
+<div class="menu-block">
+<div class="line"></div>
+<div class="label" style="opacity:.2;">ALL RIGHTS</div>
+<div class="sub">NOT RESERVED</div>
+</div>
 
-            <div class="footer-meta">
-                <div>
-                    +SPACE STUDIO<br>
-                    2024
-                </div>
+<section class="section" data-image="0">
+<div class="section-inner">
+<div class="series-title">SERIES 001</div>
+<div class="series-text">
+irrational fear of clustered forms.<br>
+beauty inside discomfort.<br>
+research through rejection.
+</div>
+</div>
+</section>
 
-                <div>
-                    ALL RIGHTS<br>
-                    NOT RESERVED
-                </div>
-            </div>
+<section class="section" data-image="1">
+<div class="section-inner">
+<div class="series-title">SERIES 002</div>
+<div class="series-text">
+body as material.<br>
+distortion as language.<br>
+anti-beauty archive.
+</div>
+</div>
+</section>
 
-        </section>
-
-        <!-- SERIES 002 -->
-        <section class="page">
-
-            <div class="meta">
-                <div>
-                    VISUAL RESEARCH<br>
-                    SERIES 002
-                </div>
-
-                <div>
-                    BODY AS MATERIAL<br>
-                    DISCOMFORT
-                </div>
-            </div>
-
-            <div class="image-wrap">
-                <img src="series-002.png" alt="">
-            </div>
-
-            <div class="footer-meta">
-                <div>
-                    +SPACE STUDIO<br>
-                    2024
-                </div>
-
-                <div>
-                    POOR TASTE<br>
-                    FOR RICH PEOPLE
-                </div>
-            </div>
-
-        </section>
-
-        <!-- SERIES 003 -->
-        <section class="page">
-
-            <div class="meta">
-                <div>
-                    VISUAL RESEARCH<br>
-                    SERIES 003
-                </div>
-
-                <div>
-                    EMPTY BUDGET<br>
-                    EXPENSIVE REFERENCES
-                </div>
-            </div>
-
-            <div class="image-wrap">
-                <img src="series-003.png" alt="">
-            </div>
-
-            <div class="footer-meta">
-                <div>
-                    +SPACE / 2024
-                </div>
-
-                <div>
-                    DON'T LOOK<br>
-                    FOR MEANING
-                </div>
-            </div>
-
-        </section>
-
-    </main>
+<section class="section" data-image="2">
+<div class="section-inner">
+<div class="series-title">SERIES 003</div>
+<div class="series-text">
+empty budget.<br>
+expensive references.<br>
+poor taste for rich people.
+</div>
+</div>
+</section>
 
 </div>
+
+<div class="right">
+
+<div class="image-stage">
+
+<img src="series-001.png" class="visual active">
+<img src="series-002.png" class="visual">
+<img src="series-003.png" class="visual">
+
+</div>
+
+<div class="right-meta">
+<div>
+VISUAL RESEARCH<br>
+SERIES 001
+</div>
+
+<div>
+NO PRODUCT<br>
+ONLY LANGUAGE
+</div>
+
+<div>
++SPACE STUDIO<br>
+2024
+</div>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const sections =
+document.querySelectorAll('.section');
+
+const visuals =
+document.querySelectorAll('.visual');
+
+window.addEventListener('scroll', () => {
+
+let current = 0;
+
+sections.forEach((section, index)=>{
+
+const rect =
+section.getBoundingClientRect();
+
+if(rect.top <= window.innerHeight * 0.45){
+current = index;
+}
+
+});
+
+visuals.forEach(img =>
+img.classList.remove('active'));
+
+visuals[current]
+.classList.add('active');
+
+});
+
+</script>
 
 </body>
 </html>
