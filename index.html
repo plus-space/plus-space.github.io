@@ -1,284 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <title>+SPACE</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-background:#fff;
-color:#000;
-font-family:'Inter',sans-serif;
-overflow-x:hidden;
+    background:#f4f4f4;
+    color:#000;
+    font-family:'Inter',sans-serif;
 }
 
-/* grain */
-
-body::before{
-content:"";
-position:fixed;
-inset:0;
-pointer-events:none;
-opacity:.035;
-background-image:url("https://grainy-gradients.vercel.app/noise.svg");
-mix-blend-mode:multiply;
-z-index:999;
+.container{
+    width:100%;
 }
 
-/* hero */
-
-.hero{
-min-height:100vh;
-padding:30px;
-display:grid;
-grid-template-columns:1.2fr .8fr;
-gap:60px;
-align-items:start;
-}
-
-.left{
-display:flex;
-flex-direction:column;
+.header{
+    padding:40px 60px 20px;
 }
 
 .logo{
-font-size:clamp(80px,13vw,230px);
-font-weight:900;
-letter-spacing:-0.09em;
-line-height:.9;
-text-transform:uppercase;
-margin-bottom:20px;
-cursor:pointer;
-transition:.4s;
-animation:flash 5s infinite;
-width:fit-content;
+    font-size:9vw;
+    font-weight:500;
+    letter-spacing:-0.08em;
+    line-height:0.9;
 }
 
-.logo:hover{
-transform:translateX(8px);
+.sub{
+    margin-top:10px;
+    font-size:18px;
+    letter-spacing:0.2em;
 }
 
-@keyframes flash{
-
-0%,94%,100%{
-background:#fff;
-color:#000;
+.page{
+    padding:40px 60px 120px;
 }
 
-95%,97%{
-background:#000;
-color:#fff;
+.meta{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+    text-transform:uppercase;
+    margin-bottom:30px;
+    letter-spacing:0.08em;
 }
 
+.image-wrap{
+    width:100%;
+    margin-bottom:120px;
 }
 
-/* nav */
-
-.nav{
-display:flex;
-flex-direction:column;
-gap:35px;
-margin-top:30px;
-max-width:300px;
+.image-wrap img{
+    width:100%;
+    height:auto;
+    display:block;
+    object-fit:cover;
 }
 
-.nav-item{
-display:flex;
-flex-direction:column;
-gap:8px;
-text-decoration:none;
-color:#000;
-transition:.3s;
-width:fit-content;
+.footer-meta{
+    display:flex;
+    justify-content:space-between;
+    margin-top:20px;
+    font-size:12px;
+    text-transform:uppercase;
+    line-height:1.6;
+    letter-spacing:0.06em;
 }
 
-.nav-item:hover{
-transform:translateX(12px);
-opacity:.55;
+.black-section{
+    background:#000;
+    color:#fff;
+    padding:60px;
 }
 
-.line{
-width:20px;
-height:1px;
-background:#000;
+.black-section .footer-meta{
+    color:#fff;
 }
 
-.title{
-font-size:18px;
-font-weight:700;
-letter-spacing:-0.03em;
-text-transform:uppercase;
+@media(max-width:768px){
+
+    .header{
+        padding:30px 20px 10px;
+    }
+
+    .logo{
+        font-size:20vw;
+    }
+
+    .page,
+    .black-section{
+        padding:20px;
+    }
+
+    .meta,
+    .footer-meta{
+        flex-direction:column;
+        gap:20px;
+    }
 }
-
-.subtitle{
-font-size:12px;
-letter-spacing:.08em;
-opacity:.6;
-text-transform:uppercase;
-}
-
-.disabled{
-opacity:.2;
-pointer-events:none;
-}
-
-/* image */
-
-.right{
-display:flex;
-justify-content:flex-end;
-}
-
-.hero-image{
-width:100%;
-max-width:720px;
-height:92vh;
-object-fit:cover;
-filter:contrast(1.05);
-transition:.7s;
-}
-
-.hero-image:hover{
-transform:scale(1.01);
-}
-
-/* sections */
-
-.section{
-min-height:100vh;
-padding:80px 30px;
-border-top:1px solid rgba(0,0,0,.08);
-display:flex;
-align-items:center;
-}
-
-.section-title{
-font-size:clamp(40px,6vw,90px);
-font-weight:900;
-margin-bottom:30px;
-letter-spacing:-0.06em;
-}
-
-.text{
-max-width:700px;
-line-height:1.8;
-font-size:18px;
-}
-
-/* mobile */
-
-@media(max-width:1000px){
-
-.hero{
-grid-template-columns:1fr;
-}
-
-.hero-image{
-height:60vh;
-}
-
-.logo{
-font-size:26vw;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
-<section class="hero" id="home">
+<div class="container">
 
-<div class="left">
+    <header class="header">
+        <div class="logo">+ SPACE</div>
+        <div class="sub">— DESERTOUT</div>
+    </header>
 
-<div class="logo">
-+SPACE
+    <main>
+
+        <!-- SERIES 001 -->
+        <section class="black-section">
+
+            <div class="meta">
+                <div>
+                    VISUAL RESEARCH<br>
+                    SERIES 001
+                </div>
+
+                <div>
+                    NO PRODUCT<br>
+                    ONLY LANGUAGE
+                </div>
+            </div>
+
+            <div class="image-wrap">
+                <img src="series-001.png" alt="">
+            </div>
+
+            <div class="footer-meta">
+                <div>
+                    +SPACE STUDIO<br>
+                    2024
+                </div>
+
+                <div>
+                    ALL RIGHTS<br>
+                    NOT RESERVED
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SERIES 002 -->
+        <section class="page">
+
+            <div class="meta">
+                <div>
+                    VISUAL RESEARCH<br>
+                    SERIES 002
+                </div>
+
+                <div>
+                    BODY AS MATERIAL<br>
+                    DISCOMFORT
+                </div>
+            </div>
+
+            <div class="image-wrap">
+                <img src="series-002.png" alt="">
+            </div>
+
+            <div class="footer-meta">
+                <div>
+                    +SPACE STUDIO<br>
+                    2024
+                </div>
+
+                <div>
+                    POOR TASTE<br>
+                    FOR RICH PEOPLE
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SERIES 003 -->
+        <section class="page">
+
+            <div class="meta">
+                <div>
+                    VISUAL RESEARCH<br>
+                    SERIES 003
+                </div>
+
+                <div>
+                    EMPTY BUDGET<br>
+                    EXPENSIVE REFERENCES
+                </div>
+            </div>
+
+            <div class="image-wrap">
+                <img src="series-003.png" alt="">
+            </div>
+
+            <div class="footer-meta">
+                <div>
+                    +SPACE / 2024
+                </div>
+
+                <div>
+                    DON'T LOOK<br>
+                    FOR MEANING
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
 </div>
-
-<div class="nav">
-
-<a href="#home" class="nav-item">
-<div class="line"></div>
-<div class="title">+SPACE — MENU</div>
-<div class="subtitle">HOME</div>
-</a>
-
-<a href="#research" class="nav-item">
-<div class="line"></div>
-<div class="title">VISUAL RESEARCH</div>
-<div class="subtitle">SERIES 001</div>
-</a>
-
-<a href="#about" class="nav-item">
-<div class="line"></div>
-<div class="title">NO PRODUCT</div>
-<div class="subtitle">ONLY LANGUAGE</div>
-</a>
-
-<div class="nav-item disabled">
-<div class="line"></div>
-<div class="title">ALL RIGHTS</div>
-<div class="subtitle">NOT RESERVED</div>
-</div>
-
-</div>
-
-</div>
-
-<div class="right">
-<img src="hero.png" class="hero-image">
-</div>
-
-</section>
-
-<section class="section" id="research">
-
-<div>
-<div class="section-title">
-VISUAL RESEARCH / SERIES 001
-</div>
-
-<div class="text">
-Archive of visual language, material studies,
-surface destruction, reconstruction and emotion.
-Later here we add works of this series.
-</div>
-</div>
-
-</section>
-
-<section class="section" id="about">
-
-<div>
-<div class="section-title">
-NO PRODUCT / ONLY LANGUAGE
-</div>
-
-<div class="text">
-+SPACE is not built around product.
-It is built around meaning, visual memory
-and reconstruction as emotional language.
-</div>
-</div>
-
-</section>
 
 </body>
 </html>
